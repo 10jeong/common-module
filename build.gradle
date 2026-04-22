@@ -1,11 +1,10 @@
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.5.13'
-    id 'io.spring.dependency-management' version '1.1.7'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group = 'com.yeoljeong'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2'
 description = 'common-module'
 
 java {
@@ -14,19 +13,39 @@ java {
     }
 }
 
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/10jeong/common-module")
+            credentials{
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.5.13')
+    compileOnly platform('org.springframework.boot:spring-boot-dependencies:3.5.13')
+    annotationProcessor platform('org.springframework.boot:spring-boot-dependencies:3.5.13')
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testCompileOnly 'org.projectlombok:lombok'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
