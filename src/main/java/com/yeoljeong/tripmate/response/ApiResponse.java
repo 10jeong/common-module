@@ -1,6 +1,8 @@
 package com.yeoljeong.tripmate.response;
 
 import com.yeoljeong.tripmate.common.BaseCode;
+import com.yeoljeong.tripmate.exception.constants.ErrorCode;
+import com.yeoljeong.tripmate.response.constants.SuccessCode;
 import java.time.LocalDateTime;
 import lombok.Getter;
 
@@ -13,7 +15,7 @@ public class ApiResponse<T> {
 	private final T data;
 	private final LocalDateTime timestamp;
 
-	private ApiResponse(BaseCode code, boolean isSuccess, T data) {
+	private ApiResponse(boolean isSuccess, BaseCode code, T data) {
 		this.code = code.getCode();
 		this.isSuccess = isSuccess;
 		this.message = code.getMessage();
@@ -21,7 +23,7 @@ public class ApiResponse<T> {
 		this.timestamp = LocalDateTime.now();
 	}
 
-	private ApiResponse(BaseCode code, boolean isSuccess, String message, T data) {
+	private ApiResponse(boolean isSuccess, BaseCode code, String message, T data) {
 		this.code = code.getCode();
 		this.isSuccess = isSuccess;
 		this.message = message;
@@ -29,23 +31,23 @@ public class ApiResponse<T> {
 		this.timestamp = LocalDateTime.now();
 	}
 
-	public static <T> ApiResponse<T> success(BaseCode successCode, String message, T data) {
-		return new ApiResponse<>(successCode, true, message, data);
+	public static <T> ApiResponse<T> success(SuccessCode successCode, String message, T data) {
+		return new ApiResponse<>(true, successCode, message, data);
 	}
 
-	public static <T> ApiResponse<T> success(BaseCode successCode, T data) {
-		return new ApiResponse<>(successCode, true, data);
+	public static <T> ApiResponse<T> success(SuccessCode successCode, T data) {
+		return new ApiResponse<>(true, successCode, data);
 	}
 
-	public static <T> ApiResponse<T> error(BaseCode errorCode) {
-		return new ApiResponse<>(errorCode, false, null);
+	public static <T> ApiResponse<T> error(ErrorCode errorCode) {
+		return new ApiResponse<>(false, errorCode, null);
 	}
 
 	public static <T> ApiResponse<T> error(BaseCode errorCode, String message) {
-		return new ApiResponse<>(errorCode, false, message, null);
+		return new ApiResponse<>(false, errorCode, message, null);
 	}
 
 	public static <T> ApiResponse<T> error(BaseCode errorCode, T data) {
-		return new ApiResponse<>(errorCode, false, data);
+		return new ApiResponse<>(false, errorCode, data);
 	}
 }
