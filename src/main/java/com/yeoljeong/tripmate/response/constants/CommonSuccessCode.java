@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 public enum CommonSuccessCode implements SuccessCode {
 	OK(HttpStatus.OK, "성공하였습니다."),
 	CREATE(HttpStatus.CREATED, "생성되었습니다."),
-	DELETE(HttpStatus.NO_CONTENT, "삭제되었습니다."),
+	DELETE(HttpStatus.OK, "삭제되었습니다."),
 	;
 
 	private final HttpStatus status;
