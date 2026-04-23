@@ -1,14 +1,14 @@
 package com.yeoljeong.tripmate.exception;
 
-import com.yeoljeong.tripmate.common.BaseCode;
+import com.yeoljeong.tripmate.exception.constants.ErrorCode;
 import lombok.Getter;
 
 @Getter
 public class ApiException extends RuntimeException{
 
-	private final BaseCode errorCode;
+	private final ErrorCode errorCode;
 
-	public ApiException(BaseCode errorCode) {
+	public ApiException(ErrorCode errorCode) {
 		super(errorCode.getMessage());
 		this.errorCode = errorCode;
 	}
