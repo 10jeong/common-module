@@ -43,11 +43,11 @@ public class ApiResponse<T> {
 		return new ApiResponse<>(false, errorCode, null);
 	}
 
-	public static <T> ApiResponse<T> error(BaseCode errorCode, String message) {
+	public static <T> ApiResponse<T> error(ErrorCode errorCode, String message) {
 		return new ApiResponse<>(false, errorCode, message, null);
 	}
 
-	public static <T> ApiResponse<T> error(BaseCode errorCode, T data) {
+	public static <T> ApiResponse<T> error(ErrorCode errorCode, T data) {
 		return new ApiResponse<>(false, errorCode, data);
 	}
 }
