@@ -12,7 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseTimeEntity {
+abstract class BaseTimeEntity {
 
 	@CreatedDate
 	@Column(name = "created_at", updatable = false)
