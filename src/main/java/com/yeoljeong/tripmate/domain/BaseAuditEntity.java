@@ -3,7 +3,6 @@ package com.yeoljeong.tripmate.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
@@ -23,14 +22,10 @@ public abstract class BaseAuditEntity extends BaseTimeEntity {
 	@Column(name = "updated_by")
 	protected UUID updatedBy;
 
-	@Column(name = "deleted_at")
-	private LocalDateTime deletedAt;
+	@Column(name = "is_deleted", nullable = false)
+	protected boolean isDeleted = false;
 
-	@Column(name = "deleted_by")
-	private UUID deletedBy;
-
-	public void softDelete(UUID userId) {
-		this.deletedAt = LocalDateTime.now();
-		this.deletedBy = userId;
+	public void softDelete() {
+		this.isDeleted = true;
 	}
 }
