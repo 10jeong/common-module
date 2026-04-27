@@ -3,7 +3,6 @@ package com.yeoljeong.tripmate.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
