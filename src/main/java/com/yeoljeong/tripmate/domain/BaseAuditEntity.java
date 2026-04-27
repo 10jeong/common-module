@@ -22,8 +22,8 @@ public abstract class BaseAuditEntity extends BaseTimeEntity {
 	@Column(name = "updated_by")
 	protected UUID updatedBy;
 
-	@Column(name = "is_deleted")
-	protected boolean isDeleted;
+	@Column(name = "is_deleted", nullable = false)
+	protected boolean isDeleted = false;
 
 	public void softDelete() {
 		this.isDeleted = true;
