@@ -45,6 +45,13 @@ public class GlobalExceptionHandler {
 			.body(ApiResponse.error(CommonErrorCode.METHOD_NOT_ALLOWED));
 	}
 
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<ApiResponse<Void>> handleIllegalArgument(IllegalArgumentException e) {
+		return ResponseEntity
+			.status(HttpStatus.BAD_REQUEST)
+			.body(ApiResponse.error(CommonErrorCode.INVALID_ARGUMENT));
+	}
+
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ApiResponse<Void>> handleException(Exception e, HttpServletRequest request) {
 		log.error("[Unhandled Exception] {} {}", request.getMethod(), request.getRequestURI(), e);
