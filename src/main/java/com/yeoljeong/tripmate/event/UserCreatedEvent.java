@@ -1,4 +1,4 @@
-package com.yeoljeong.tripmate.event.notification;
+package com.yeoljeong.tripmate.event;
 
 import java.util.UUID;
 
