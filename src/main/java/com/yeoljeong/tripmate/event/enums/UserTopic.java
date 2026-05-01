@@ -1,18 +1,15 @@
 package com.yeoljeong.tripmate.event.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@Getter
-public enum UserTopic {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class UserTopic {
 
     /*
      * 토픽에 대한 컨벤션은 "domain.resource.active"로 합니다. (~가 ~를 한다.)
      */
 
-    USER_CREATED_TOPIC("user.created"),
-    ;
-    private final String name;
+    public static final String USER_CREATED_TOPIC = "user.created";
 
 }
