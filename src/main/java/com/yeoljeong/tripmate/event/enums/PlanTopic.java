@@ -1,19 +1,16 @@
 package com.yeoljeong.tripmate.event.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@Getter
-public enum PlanTopic {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class PlanTopic {
 
     /*
      * 토픽에 대한 컨벤션은 "domain.resource.active"로 합니다. (~가 ~를 한다.)
      */
 
-    PLAN_PARTICIPANT_ADDED_TOPIC("plan.participant.added"),
-    PLAN_UNIT_CONFIRMED_TOPIC("plan.unit.confirmed"),
-    ;
-    private final String name;
+    public static final String PLAN_PARTICIPANT_ADDED_TOPIC = "plan.participant.added";
+    public static final String PLAN_UNIT_CONFIRMED_TOPIC = "plan.unit.confirmed";
 
 }
