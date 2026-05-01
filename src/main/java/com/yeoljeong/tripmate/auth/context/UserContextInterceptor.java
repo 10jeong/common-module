@@ -17,7 +17,7 @@ public class UserContextInterceptor implements HandlerInterceptor {
         String role = request.getHeader("X-User-Role");
 
         if (userId == null || role == null) {
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
 
