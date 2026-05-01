@@ -9,7 +9,7 @@ import java.util.HexFormat;
 
 public class EventUtils {
 
-  public String getEventHash(NotificationType type, String refId, LocalDateTime updateAt)
+  public static String getEventHash(NotificationType type, String refId, LocalDateTime updateAt)
       throws NoSuchAlgorithmException {
     String rawKey = String.format("%s:%s:%s", type.toString(), refId, updateAt.toString());
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
