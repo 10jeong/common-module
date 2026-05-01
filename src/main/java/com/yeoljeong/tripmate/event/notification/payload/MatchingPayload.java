@@ -10,8 +10,8 @@ public class MatchingPayload {
   @Getter
   public static class CREATED implements NotificationPayload {
 
-    String receiverName;
-    String matchingTitle;
+    private String receiverName;
+    private String matchingTitle;
 
     @Override
     public NotificationType getType() {
@@ -20,10 +20,11 @@ public class MatchingPayload {
   }
 
   @Builder
+  @Getter
   public static class FAILED implements NotificationPayload {
 
-    String matchingUserName;
-    String matchingTitle;
+    private String matchingUserName;
+    private String matchingTitle;
 
     @Override
     public NotificationType getType() {
@@ -32,9 +33,10 @@ public class MatchingPayload {
   }
 
   @Builder
+  @Getter
   public static class SUCCEED implements NotificationPayload {
 
-    String receiverName;
+    private String receiverName;
 
     @Override
     public NotificationType getType() {

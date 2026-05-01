@@ -11,10 +11,10 @@ public class PaymentPayload {
   @Getter
   public static class SUCCEED implements NotificationPayload {
 
-    String productName;
-    Long paymentPrice;
-    LocalDateTime paymentDateTime;
-    String paymentMethod;
+    private String productName;
+    private Long paymentPrice;
+    private LocalDateTime paymentDateTime;
+    private String paymentMethod;
 
     @Override
     public NotificationType getType() {
@@ -26,10 +26,10 @@ public class PaymentPayload {
   @Getter
   public static class FAILED implements NotificationPayload {
 
-    String productName;
-    Long paymentPrice;
-    String paymentMethod;
-    String paymentErrorMessage;
+    private String productName;
+    private Long paymentPrice;
+    private String paymentMethod;
+    private String paymentErrorMessage;
 
     @Override
     public NotificationType getType() {

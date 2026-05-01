@@ -26,6 +26,7 @@ public class NotificationSendEvent<P extends NotificationPayload> {
     this.eventHash = eventHash;
     this.redirectUrl = redirectUrl;
     this.notificationType = type;
+    this.refId = refId;
     this.payload = payload;
   }
 
