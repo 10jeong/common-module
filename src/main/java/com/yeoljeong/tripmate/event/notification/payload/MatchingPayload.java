@@ -2,14 +2,16 @@ package com.yeoljeong.tripmate.event.notification.payload;
 
 import com.yeoljeong.tripmate.event.notification.constants.NotificationType;
 import lombok.Builder;
+import lombok.Getter;
 
 public class MatchingPayload {
 
   @Builder
-  public record CREATED(
-      String receiverName,
-      String matchingTitle
-  ) implements NotificationPayload {
+  @Getter
+  public static class CREATED implements NotificationPayload {
+
+    String receiverName;
+    String matchingTitle;
 
     @Override
     public NotificationType getType() {
@@ -18,10 +20,10 @@ public class MatchingPayload {
   }
 
   @Builder
-  public record FAILED(
-      String matchingUserName,
-      String matchingTitle
-  ) implements NotificationPayload {
+  public static class FAILED implements NotificationPayload {
+
+    String matchingUserName;
+    String matchingTitle;
 
     @Override
     public NotificationType getType() {
@@ -30,9 +32,9 @@ public class MatchingPayload {
   }
 
   @Builder
-  public record SUCCEED(
-      String receiverName
-  ) implements NotificationPayload {
+  public static class SUCCEED implements NotificationPayload {
+
+    String receiverName;
 
     @Override
     public NotificationType getType() {

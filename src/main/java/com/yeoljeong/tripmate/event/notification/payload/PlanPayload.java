@@ -6,9 +6,9 @@ import lombok.Builder;
 public class PlanPayload {
 
   @Builder
-  public record CONFIRMED(
-      String planTitle
-  ) implements NotificationPayload {
+  public static class CONFIRMED implements NotificationPayload {
+
+    String planTitle;
 
     @Override
     public NotificationType getType() {
