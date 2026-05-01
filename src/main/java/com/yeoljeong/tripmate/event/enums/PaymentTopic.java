@@ -1,8 +1,10 @@
 package com.yeoljeong.tripmate.event.enums;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public enum PaymentTopic {
 
     /*
