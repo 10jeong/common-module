@@ -1,4 +1,4 @@
-package com.yeoljeong.tripmate.auth;
+package com.yeoljeong.tripmate.auth.context;
 
 public class UserContextHolder {
 

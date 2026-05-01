@@ -1,7 +1,7 @@
 package com.yeoljeong.tripmate.config;
 
-import com.yeoljeong.tripmate.auth.LoginUserArgumentResolver;
-import com.yeoljeong.tripmate.auth.UserContextInterceptor;
+import com.yeoljeong.tripmate.auth.context.LoginUserArgumentResolver;
+import com.yeoljeong.tripmate.auth.context.UserContextInterceptor;
 import java.util.List;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
