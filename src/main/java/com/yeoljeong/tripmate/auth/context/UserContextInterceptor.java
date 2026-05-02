@@ -1,4 +1,4 @@
-package com.yeoljeong.tripmate.auth;
+package com.yeoljeong.tripmate.auth.context;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ public class UserContextInterceptor implements HandlerInterceptor {
         String role = request.getHeader("X-User-Role");
 
         if (userId == null || role == null) {
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
 

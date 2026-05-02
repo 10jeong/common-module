@@ -1,5 +1,6 @@
-package com.yeoljeong.tripmate.auth;
+package com.yeoljeong.tripmate.auth.context;
 
+import com.yeoljeong.tripmate.auth.annotation.LoginUser;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.support.WebDataBinderFactory;
