@@ -2,6 +2,7 @@ package com.yeoljeong.tripmate.auth.context;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.UUID;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 public class UserContextInterceptor implements HandlerInterceptor {
@@ -21,8 +22,13 @@ public class UserContextInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        UserContext context = new UserContext(userId, role);
-        UserContextHolder.setContext(context);
+        try {
+            UUID userUUID = UUID.fromString(userId);
+            UserContextHolder.setContext(new UserContext(userUUID, role));
+        } catch (IllegalArgumentException e) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
+        }
 
         return true;
 
