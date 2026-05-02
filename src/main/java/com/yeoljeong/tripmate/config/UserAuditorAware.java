@@ -1,4 +1,4 @@
-package com.yeoljeong.tripmate.domain;
+package com.yeoljeong.tripmate.config;
 
 import com.yeoljeong.tripmate.auth.context.UserContext;
 import com.yeoljeong.tripmate.auth.context.UserContextHolder;
