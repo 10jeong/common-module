@@ -5,7 +5,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 public record PaymentCompletedEvent(
-        UUID eventId,
+        String eventHash,
         UUID userId,
         UUID orderId,
         UUID paymentId,

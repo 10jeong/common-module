@@ -3,6 +3,7 @@ package com.yeoljeong.tripmate.event;
 import java.util.UUID;
 
 public record MatchingCreateEvent (
+    String eventHash,
     UUID matchingId,
     UUID hostUserId,
     String title,
