@@ -14,5 +14,7 @@ public final class MatchingTopic {
     public static final String MATCHING_CREATED_TOPIC = "matching.created";
     public static final String MATCHING_APPLIED_TOPIC = "matching.applied";
     public static final String MATCHING_DISAPPLIED_TOPIC = "matching.disapplied";
+    public static final String MATCHING_MATCHED_TOPIC = "matching.matched";
+
 
 }
