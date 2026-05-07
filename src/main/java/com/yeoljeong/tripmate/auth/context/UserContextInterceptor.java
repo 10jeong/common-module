@@ -38,8 +38,17 @@ public class UserContextInterceptor implements HandlerInterceptor {
 
         try {
             Claims claims = passportValidator.validate(passport);
-            UUID userId = UUID.fromString(claims.getSubject());
+
+            String subject = claims.getSubject();
             String role = claims.get("role", String.class);
+
+            if (subject == null || subject.isBlank() || role == null || role.isBlank()) {
+                log.warn("[Passport] 필수 claim 누락 - uri: {}", request.getRequestURI());
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return false;
+            }
+
+            UUID userId = UUID.fromString(subject);
             UserContextHolder.setContext(new UserContext(userId, role));
         } catch (ExpiredJwtException e) {
             log.warn("[Passport] 만료된 Passport - uri: {}", request.getRequestURI());
