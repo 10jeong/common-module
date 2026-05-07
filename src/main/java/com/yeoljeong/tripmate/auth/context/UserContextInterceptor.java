@@ -2,13 +2,19 @@ package com.yeoljeong.tripmate.auth.context;
 
 import com.yeoljeong.tripmate.auth.passport.PassportValidator;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+
+@Slf4j
 @RequiredArgsConstructor
 public class UserContextInterceptor implements HandlerInterceptor {
 
@@ -25,7 +31,9 @@ public class UserContextInterceptor implements HandlerInterceptor {
         String passport = request.getHeader(HEADER_PASSPORT);
 
         if (passport == null) {
+            log.warn("[Passport] X-Passport 헤더 없음 - uri: {}", request.getRequestURI());
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
         }
 
         try {
@@ -33,7 +41,20 @@ public class UserContextInterceptor implements HandlerInterceptor {
             UUID userId = UUID.fromString(claims.getSubject());
             String role = claims.get("role", String.class);
             UserContextHolder.setContext(new UserContext(userId, role));
-        } catch (JwtException | IllegalArgumentException e) {
+        } catch (ExpiredJwtException e) {
+            log.warn("[Passport] 만료된 Passport - uri: {}", request.getRequestURI());
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
+        } catch (SignatureException e) {
+            log.warn("[Passport] 서명 검증 실패 - uri: {}", request.getRequestURI());
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
+        } catch (MalformedJwtException | UnsupportedJwtException e) {
+            log.warn("[Passport] 잘못된 Passport 형식 - uri: {}", request.getRequestURI());
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
+        } catch (IllegalArgumentException e) {
+            log.warn("[Passport] userId UUID 파싱 실패 - uri: {}", request.getRequestURI());
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
