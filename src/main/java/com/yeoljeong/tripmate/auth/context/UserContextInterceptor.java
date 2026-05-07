@@ -2,6 +2,7 @@ package com.yeoljeong.tripmate.auth.context;
 
 import com.yeoljeong.tripmate.auth.passport.PassportValidator;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class UserContextInterceptor implements HandlerInterceptor {
             UUID userId = UUID.fromString(claims.getSubject());
             String role = claims.get("role", String.class);
             UserContextHolder.setContext(new UserContext(userId, role));
-        } catch (IllegalArgumentException e) {
+        } catch (JwtException | IllegalArgumentException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
