@@ -12,5 +12,6 @@ public final class PaymentTopic {
 
     public static final String PAYMENT_COMPLETED_TOPIC = "payment.completed";
     public static final String PAYMENT_FAILED_TOPIC = "payment.failed";
+    public static final String PAYMENT_REFUNDED_TOPIC = "payment.refunded";
 
 }

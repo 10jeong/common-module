@@ -11,5 +11,6 @@ public final class OrderTopic {
      */
 
     public static final String ORDER_CREATED_TOPIC = "order.created";
+    public static final String ORDER_CANCELLED_TOPIC = "order.cancelled";
 
 }
