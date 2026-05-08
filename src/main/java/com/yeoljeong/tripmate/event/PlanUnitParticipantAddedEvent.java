@@ -6,6 +6,8 @@ public record PlanUnitParticipantAddedEvent(
     UUID eventId,
     UUID productId,
     UUID scheduleId,
+    UUID planUnitId,
+    UUID userId,
     int quantity
 ) {
 

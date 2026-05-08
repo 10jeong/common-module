@@ -2,10 +2,10 @@ package com.yeoljeong.tripmate.event;
 
 import java.util.UUID;
 
-public record OrderCreatedEvent(
+public record OrderCancelledEvent(
     UUID eventId,
-    UUID userId,
     UUID orderId,
+    UUID userId,
     UUID planUnitId,
     UUID productId,
     UUID scheduleId,
