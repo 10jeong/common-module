@@ -8,6 +8,7 @@ public record OrderCancelledEvent(
     UUID userId,
     UUID planUnitId,
     UUID productId,
+    UUID productName,
     UUID scheduleId,
     int quantity
 ) {
