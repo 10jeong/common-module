@@ -5,6 +5,7 @@ import java.util.UUID;
 public record PlanUnitParticipantQuitEvent(
     UUID eventId,
     UUID userId,
-    UUID planUnitId
+    UUID planUnitId,
+    String reason
 ) {
 }
