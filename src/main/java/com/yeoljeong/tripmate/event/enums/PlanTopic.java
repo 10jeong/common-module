@@ -13,7 +13,9 @@ public final class PlanTopic {
   public static final String PLAN_UNIT_PARTICIPANT_ADDED_TOPIC = "plan.unit.participant.added";
   public static final String PLAN_UNIT_CONFIRMED_TOPIC = "plan.unit.confirmed";
   public static final String PLAN_UNIT_PARTICIPANT_ADD_FAILED_TOPIC = "plan.unit.participant.add.failed";
-  public static final String PLAN_UNIT_PARTICIPANT_DEDUCTED_TOPIC = "plan.unit.participant.deducted";
+  public static final String PLAN_UNIT_PARTICIPANT_DEDUCTED_BY_PRODUCT_TOPIC = "plan.unit.participant.deducted-by-product";
   public static final String PLAN_UNIT_PARTICIPANT_QUIT_TOPIC = "plan.unit.participant.quit";
+  public static final String PLAN_UNIT_PARTICIPANT_DEDUCT_FAILED_TOPIC = "plan.unit.participant.deduct.failed";
+  public static final String PLAN_UNIT_PARTICIPANT_DEDUCTED_BY_ORDER_TOPIC = "plan.unit.participant.deducted-by-order";
 
 }
