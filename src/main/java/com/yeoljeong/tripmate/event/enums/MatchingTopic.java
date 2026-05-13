@@ -15,6 +15,8 @@ public final class MatchingTopic {
     public static final String MATCHING_APPLIED_TOPIC = "matching.applied";
     public static final String MATCHING_DISAPPLIED_TOPIC = "matching.disapplied";
     public static final String MATCHING_MATCHED_TOPIC = "matching.matched";
+    public static final String MATCHING_MATE_SUBSCRIBED_TOPIC = "matching.mate.subscribed";
+    public static final String MATCHING_MATE_UNSUBSCRIBED_TOPIC = "matching.mate.unsubscribed";
 
 
 }
