@@ -12,5 +12,6 @@ public final class UserTopic {
 
     public static final String USER_CREATED_TOPIC = "user.created";
     public static final String USER_WITHDRAWAL_COMPLETED_TOPIC = "user.withdrawal.completed";
+    public static final String USER_LOGOUT_TOPIC = "user.logout";
 
 }
